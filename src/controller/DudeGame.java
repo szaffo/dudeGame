@@ -15,7 +15,7 @@ import view.GamePanel;
  * @version 1.0
  * @since 04-Apr-2020
  */
-public class ImpossibleMission extends JFrame {
+public class DudeGame extends JFrame {
 
 	private GamePanel gamePanel;
 	private Model data;
@@ -26,7 +26,7 @@ public class ImpossibleMission extends JFrame {
 	/**
 	 * @author Szabó Martin
 	 */
-	public ImpossibleMission() {
+	public DudeGame() {
 		finished = false;
 		gamePanel = new GamePanel();
 		
@@ -42,7 +42,7 @@ public class ImpossibleMission extends JFrame {
 
 		setSize(1600, 900);
 		setResizable(false);
-		setTitle("Impossible Mission");
+		setTitle("The game that makes you say: Dude..");
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
@@ -135,9 +135,7 @@ public class ImpossibleMission extends JFrame {
 	 * Belépési pont a programba
 	 */
 	public static void main(final String[] args) {
-		new ImpossibleMission();
-		SoundMaker sm = new SoundMaker();
-		sm.play("Taylor Swift");
+		new DudeGame();
 	}
 
 }// end ImpossibleMission

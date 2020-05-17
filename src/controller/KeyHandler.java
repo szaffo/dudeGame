@@ -12,10 +12,10 @@ import java.awt.event.KeyEvent;
  */
 public class KeyHandler implements KeyListener {
 
-    private ImpossibleMission parent;
+    private DudeGame parent;
     private Set<Integer> holdedButtons;
 
-    public KeyHandler(ImpossibleMission parent) {
+    public KeyHandler(DudeGame parent) {
         this.parent = parent;
         holdedButtons = new HashSet<Integer>();
     }   

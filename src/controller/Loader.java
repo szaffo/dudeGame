@@ -23,10 +23,12 @@ public class Loader {
 
     private ArrayList<String> getFileNames() {
         ArrayList<String> fileNames = new ArrayList<>();
+
+
+
         for (File file : new File("data/").listFiles()) {
             if (file.isFile()) {
                 fileNames.add(file.getName());
-                System.out.println(file.getName());
             }
         }
         return fileNames;
