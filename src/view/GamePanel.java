@@ -6,8 +6,6 @@ import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 
-import java.util.Observable;
-import java.util.Observer;
 import java.awt.Color;
 
 import javax.swing.ImageIcon;
@@ -25,7 +23,7 @@ import model.Item;
  * 
  * @author Us and our previous projects
  */
-public class GamePanel extends JPanel implements Observer {
+public class GamePanel extends JPanel {
 
     private Image background;
     private Image victoryScreen;
@@ -138,19 +136,8 @@ public class GamePanel extends JPanel implements Observer {
         this.paintComponent(g);
     }
 
-    /**
-     * Ez a metódus fut le minden alkalommal mikor a megfigyelt objektum
-     * megváltozik, és erről értesítést küld
-     * 
-     * @param observable A megfigylet objektum, a Model
-     * @param arg        Az értesítéshez csatolt objektum
-     */
-    @Override
-    public void update(Observable observable, Object arg) {
-        this.data = (Model) observable;
-
-        // System.out.println("[VIEW] Redrawing panel " +
-        // Integer.toString(drawCount++));
+    public void update(Model data) {
+        this.data = (Model) data;
 
         repaint();
         Toolkit.getDefaultToolkit().sync();

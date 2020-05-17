@@ -1,8 +1,6 @@
 package model;
 
 import java.util.HashMap;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * Ez egy összefogó osztály, mely item-eket tárol egy listában. Valamint az
@@ -11,20 +9,16 @@ import java.util.Observer;
  * @author Szabó Martin
  * @since 2020-04-08
  */
-public class Model extends Observable {
+public class Model {
 
     private Agent player;
 
-    private int tickCounter = 0;
     private HashMap<String, ItemSet> itemSets;
     private String currentActiveItemSet;
     private String startMapName;
 
-    private int collisionCounter = 0;
-
-    public Model(Observer observer) {
+    public Model() {
         Furniture.reset();
-        addObserver(observer);
         player = new Agent(this, 0, 0);
         itemSets = new HashMap<String, ItemSet>();
         currentActiveItemSet = null;
@@ -71,9 +65,7 @@ public class Model extends Observable {
         if (isPlayerCollidesWithEnemy())  {
             resetPlayerPosition();
         }
-        
-        setChanged();
-        notifyObservers();
+    
 
     }
 

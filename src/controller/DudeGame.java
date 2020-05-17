@@ -31,7 +31,7 @@ public class DudeGame extends JFrame {
 		gamePanel = new GamePanel();
 		
 		// Új adatmodel létrehozása
-		data = new Model(gamePanel);
+		data = new Model();
 		loader = new Loader(data);
 		loader.load();
 		data.setStartingMap("room1.txt");
@@ -109,13 +109,15 @@ public class DudeGame extends JFrame {
 			if (data.hasWon()) {
 				finished = true;
 			}
+
+			gamePanel.update(data);
 		}
 
 	}
 
 	public void restart() {
 		if (finished) {
-			data = new Model(gamePanel);
+			data = new Model();
 			loader = new Loader(data);
 			loader.load();
 			data.setStartingMap("room1.txt");
