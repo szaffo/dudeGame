@@ -1,6 +1,8 @@
 package model;
 
 import controller.Direction;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * Ez az Agent osztály
@@ -16,6 +18,13 @@ public class Agent extends FallingItem {
     private boolean lootStateChanged;
     public int lootCounter;
 
+    protected Image leftImage;
+    protected Image rightImage;
+    protected Image jumpImage;
+    protected Image fallImage;
+    protected Image standImage;
+    
+
     public Agent(Model parent, double _posX, double _posY) {
         super(parent, _posX, _posY, 50, 100);
         direction = Direction.LEFT;
@@ -23,6 +32,11 @@ public class Agent extends FallingItem {
         lootStateChanged = false;
         lootCounter = 0;
         sound = "jump";
+        this.rightImage = new ImageIcon("images/player_right_walking.png").getImage();
+        this.leftImage = new ImageIcon("images/player_left_walking.png").getImage();
+        this.standImage = new ImageIcon("images/player_standing.png").getImage();
+        this.fallImage = new ImageIcon("images/player_falling.png").getImage();
+        this.jumpImage = new ImageIcon("images/player_jumping.png").getImage();
     }
 
     /**
@@ -46,24 +60,20 @@ public class Agent extends FallingItem {
         return this.lootCounter;
     }
 
-    /**
-     * Az ős osztályban (FallingItem) implementált állapotoktól függően
-     * meghatározza, hogy milyen képet kell megjeleníteni.
-     */
     @Override
-    public String getImageName() {
+    public Image getImage() {
         if (standing)
-            return "player_standing.png";
+            return standImage;
         if (falling)
-            return "player_falling.png";
+            return fallImage;
         if (jumping)
-            return "player_jumping.png";
+            return jumpImage;
         if (shift.getX() > 0 && shift.getY() == 0)
-            return "player_right_walking.png";
+            return rightImage;
         if (shift.getX() < 0 && shift.getY() == 0)
-            return "player_left_walking.png";
+            return leftImage;
 
-        return "player_standing.png";
+        return standImage;
     }
 
     /**

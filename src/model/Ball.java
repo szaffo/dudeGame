@@ -1,13 +1,14 @@
 package model;
 
 import physics.Vector;
+import javax.swing.ImageIcon;
 
 public class Ball extends FallingItem implements Enemy {
 
     public Ball(Model parent, double _posX, double _posY) {
         super(parent, _posX, _posY, 100, 100);
         this.gravityVector = new Vector(0,0);
-        imageName = "ball.png";
+        image = new ImageIcon("images/ball.png").getImage();
     }
 
     @Override

@@ -119,12 +119,12 @@ public class GamePanel extends JPanel {
      * @author Szabó Martin
      */
     private void drawItem(Graphics g, Item item) {
-        g.drawImage(new ImageIcon("images/" + item.getImageName()).getImage(), (int) item.getPosX(),
+        g.drawImage(item.getImage(), (int) item.getPosX(),
                 (int) item.getPosY(), null);
         if (item instanceof Robot) {
             Robot ritem = (Robot) item;
             if (ritem.isAttacking()) {
-                g.drawImage(new ImageIcon("images/" + ritem.getLaserImageName()).getImage(), ritem.getLaserPosX(),
+                g.drawImage(ritem.getLaserImage(), ritem.getLaserPosX(),
                         ritem.getLaserPosY(), null);
             }
         }

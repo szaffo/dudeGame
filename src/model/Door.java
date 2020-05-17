@@ -1,6 +1,7 @@
 package model;
 
 import java.awt.Rectangle;
+import javax.swing.ImageIcon;
 
 /**
  * Ez az osztály implementálja a Doort amin keresztül átmehetünk másik szobába.
@@ -12,7 +13,7 @@ public class Door extends Item {
 
     public Door(Model parent, double _posX, double _posY,String level) {
         super(parent, _posX, _posY,100,120);
-        this.imageName = "door.png";
+        image = new ImageIcon("images/door.png").getImage();
         this.level = level;
         this.sound = "door";
     }

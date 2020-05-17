@@ -41,7 +41,6 @@ public class FallingItem extends Item {
         standing = false;
         updateStage = 0;
         time = 0;
-        imageName = "placeholder.png";
         // this.startingPosition = new Position(_posX,_posY);
         speed = 10;
     }

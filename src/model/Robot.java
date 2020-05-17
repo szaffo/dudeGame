@@ -3,6 +3,8 @@ package model;
 import controller.Direction;
 import java.util.Random;
 import java.awt.Rectangle;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * @author Simonyi Patrik
@@ -15,12 +17,21 @@ public class Robot extends FallingItem implements Enemy {
     private int nextWaitRandomOffset;
     private int nextWalkRandomOffset;
     private Random rng;
+    private Image leftImage;
+    private Image rightImage;
+    private Image attackLeftImage;
+    private Image attackRightImage;
 
     public Robot(Model parent, double _posX, double _posY) {
         super(parent, _posX, _posY, 60, 80);
         speed = 6;
         isAttacking = false;
         tickCount = 0;
+
+        rightImage = new ImageIcon("images/robot_right.png").getImage();
+        leftImage = new ImageIcon("images/robot_left.png").getImage();
+        attackLeftImage = new ImageIcon("images/attack_left.png").getImage();
+        attackRightImage = new ImageIcon("images/attack_right.png").getImage();
         
         this.rng = new Random();
         
@@ -33,14 +44,10 @@ public class Robot extends FallingItem implements Enemy {
         nextWalkRandomOffset = rng.nextInt() % 20;
     }
 
-    /**
-     * Az ős osztályban (FallingItem) implementált állapotoktól függően
-     * meghatározza, hogy milyen képet kell megjeleníteni.
-     */
-    public String getImageName() {
-        if (this.direction == Direction.RIGHT) return "robot_right.png";
-        if (this.direction == Direction.LEFT) return "robot_left.png";
-        return "robot_left.png";
+    @Override
+    public Image getImage() {
+        if (this.direction == Direction.RIGHT) return rightImage;
+        return leftImage;
     }
 
     @Override
@@ -107,11 +114,11 @@ public class Robot extends FallingItem implements Enemy {
      * A nézés irányától függően az egyik lézer sprite neve
      * @return
      */
-    public String getLaserImageName() {
+    public Image getLaserImage() {
         if (direction == Direction.LEFT) {
-            return "attack_left.png";
+            return attackLeftImage;
         } else {
-            return "attack_right.png";
+            return attackRightImage;
         }
     }
 

@@ -1,6 +1,7 @@
 package model;
 
 import physics.Size;
+import javax.swing.ImageIcon;
 
 /**
  * Ez az osztály felelteti meg azt a játékbeli elemet ahol, a puzzle-ket lehet
@@ -29,7 +30,7 @@ public class Furniture extends FallingItem {
             this.size = new Size(80, 150);
             break;
         }
-        this.imageName = imageName;
+        this.image = new ImageIcon("images/" + imageName).getImage();
         this.hasLoot = hasLoot;
         this.isLooted = false;
         this.searchProgress = 0;

@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 import controller.SoundMaker;
 import physics.Size;
 import physics.Position;
+import java.awt.Image;
+import javax.swing.ImageIcon;
 
 /**
  * Generic Item class
@@ -14,7 +16,7 @@ import physics.Position;
  */
 public class Item {
 
-    protected String imageName;
+    protected Image image;
     protected Position position;
     protected Size size;
     protected SoundMaker soundMaker;
@@ -25,7 +27,7 @@ public class Item {
         this.parent = parent;
         this.position = new Position(x,y);
         this.size = new Size(width, height);
-        this.imageName = "placeholder.png";
+        this.image = new ImageIcon("images/placeholder.png").getImage();
         soundMaker = new SoundMaker();
         sound = null;
     }
@@ -34,7 +36,6 @@ public class Item {
         this.parent = parent;
         this.position = pos;
         this.size = cords;
-        this.imageName = "placeholder.png";
         soundMaker = new SoundMaker();
     }
 
@@ -87,7 +88,7 @@ public class Item {
     /**
      * Visszatér az osztályt képviselő kép nevével.
      */
-    public String getImageName() {return this.imageName;}
+    public Image getImage() {return this.image;}
 
     /**
      * Ez a metódus meghívódik minden game tick alkalmával.
